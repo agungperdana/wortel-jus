@@ -59,13 +59,15 @@ export default function Login({navigation}) {
                             style={{width:"100%", marginBottom:10}}
                             autoFocus={true}
                             value={email}
-                            onChangeText={(txt) => setEmail(txt)}/>              
+                            onChangeText={(txt) => setEmail(txt)}
+                            right={<TextInput.Icon name="email"/>}/>              
                 <TextInput label="Password"
                             value={password} 
                             secureTextEntry={true} 
                             placeholder="Insert your password" 
                             style={{width:"100%", marginBottom:10}}
-                            onChangeText={(txt) => setPassword(txt)}/>
+                            onChangeText={(txt) => setPassword(txt)}
+                            right={<TextInput.Icon name="key"/>}/>
                 
                 <Surface style={{
                     width:"100%",

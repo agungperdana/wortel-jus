@@ -28,9 +28,11 @@ export default function App() {
 
   return (
     <PaperProvider theme={CombinedDefaultTheme}>
-      <NavigationContainer theme={CombinedDefaultTheme}>
+      <NavigationContainer theme={CombinedDefaultTheme} screenOptions={{
+         header:(props)=><TopNavbar {...props}/>
+      }}>
         <Stack.Navigator initialRouteName="Login" screenOptions={{
-          header:(props)=><TopNavbar {...props}/>
+          headerShown:false
         }}>
           <Stack.Screen name="Login" component={Login}/>
           <Stack.Screen name="Register" component={Register}/>
