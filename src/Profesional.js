@@ -93,7 +93,7 @@ export default function Profesional({navigation}) {
                         {
                             athletes.map((ath)=>{
                                 return(
-                                    <DataTable.Row id={"rowId-"+ath?.id}>
+                                    <DataTable.Row key={"rowId-"+ath?.id}>
                                         <DataTable.Cell style={{flex:1, alignContent:"center"}}>
                                             <Avatar.Icon size={24} icon="account-box" style={{marginRight:10}}/>
                                         </DataTable.Cell>
