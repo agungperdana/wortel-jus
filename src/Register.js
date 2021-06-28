@@ -16,7 +16,7 @@ export default function Register({navigation}) {
 
             try {
 
-                let response = await fetch('http://192.168.1.104:8080/account/create', {
+                let response = await fetch('https://wortel-jus.herokuapp.com/account/create', {
                     method: 'POST',
                     headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
                     body: JSON.stringify({
