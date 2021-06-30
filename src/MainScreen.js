@@ -5,6 +5,7 @@ import Home from './Home';
 import NFC from './NFC';
 import Profesional from './Profesional';
 import Profile from './Profile';
+import ReadTag from './ReadTag';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -20,6 +21,9 @@ export default function MainScreen() {
             }}/>
             <Tab.Screen name="nfc" component={NFC} options={{
                 tabBarIcon:({color})=><IconButton icon="cloud-search" color={color} style={{paddingBottom:15}}/>
+            }}/>
+            <Tab.Screen name="Scan" component={ReadTag} options={{
+                tabBarIcon:({color})=><IconButton icon="antenna" color={color} style={{paddingBottom:15}}/>
             }}/>
             <Tab.Screen name="Profile" component={Profile} options={{
                 tabBarIcon:({color})=><IconButton icon="account-settings" color={color} style={{paddingBottom:15}}/>

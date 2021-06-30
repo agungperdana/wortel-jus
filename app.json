@@ -25,7 +25,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.kratonsolution.dummy.worteljus"
+      "package": "com.kratonsolution.dummy.worteljus",
+      "permissions": [ "NFC", "READ_LOGS" ]
     },
     "web": {
       "favicon": "./assets/favicon.png"

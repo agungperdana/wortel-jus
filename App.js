@@ -14,7 +14,7 @@ import {
 
 import merge from 'deepmerge';
 import Register from './src/Register';
-import WortelJus from './assets/worteljus.json';
+import WortelJus from './app.json';
 import TopNavbar from './src/TopNavbar';
 import Login from './src/Login';
 import MainScreen from './src/MainScreen';
@@ -47,4 +47,4 @@ export default function App() {
   );
 }
 
-AppRegistry.registerComponent(WortelJus, () => App);
+AppRegistry.registerComponent("WortelJus", () => App);
