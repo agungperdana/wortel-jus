@@ -1,25 +1,38 @@
 import React from 'react';
 import { SafeAreaView, Alert } from 'react-native';
 import { Surface, Button, Divider, Avatar, Title, DataTable } from 'react-native-paper';
-import NfcManager, {NfcEvents, Ndef, NdefParser} from 'react-native-nfc-manager';
+import NfcManager, {NfcEvents} from 'react-native-nfc-manager';
 
 export default function ReadTag({navigation}) {
+
+    const [nfc, setNfc] = React.useState(false);
+    const [athlete, setAthlete] = React.useState({});
 
     async function startListener() {
 
         try {
 
-            await NfcManager.start();
-            NfcManager.setEventListener(NfcEvents.DiscoverTag, (tag)=>{
+            await NfcManager.registerTagEvent()
+                            .then(out=>setNfc(true))
+                            .catch(e=>{});
 
-                Alert.alert("Info", tag?.payload);
-                NfcManager.unregisterTagEvent().catch(() => 0);
-            });
+            if(nfc) {
 
-            await NfcManager.registerTagEvent();
+                NfcManager.setEventListener(NfcEvents.DiscoverTag, (tag)=>{
 
-            NfcManager.setEventListener(NfcEvents.DiscoverTag, null);
-            NfcManager.unregisterTagEvent();
+                    Alert.alert("Info", tag?.payload);
+                    NfcManager.unregisterTagEvent().catch(() => 0);
+                });
+    
+                await NfcManager.registerTagEvent();
+    
+                NfcManager.setEventListener(NfcEvents.DiscoverTag, null);
+                NfcManager.unregisterTagEvent();
+            }
+            else {
+                Alert.alert("Error", "Device not supported");
+            }
+
         }
         catch(e) {
             Alert.alert("Error", "Error "+e.message);
@@ -58,7 +71,7 @@ export default function ReadTag({navigation}) {
                                     </DataTable.Row>
                     </DataTable>
                     <Divider style={{marginBottom:30}}/>
-                    <Button mode="contained" onPress={()=>this.startListener()} style={{width:200, marginBottom:10}}>Start Scan</Button>
+                    <Button mode="contained" onPress={()=>startListener()} style={{width:200, marginBottom:10}}>Start Scan</Button>
                 </Surface>
             </SafeAreaView>
     )
